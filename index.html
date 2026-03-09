@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Creative Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="form-container">
+    <h2>Create Account</h2>
+
+    <form id="form">
+
+        <div class="name-row">
+            <input type="text" placeholder="First Name" required>
+            <input type="text" placeholder="Last Name" required>
+        </div>
+
+        <input type="email" placeholder="Email Address" required>
+
+        <input type="number" placeholder="Phone Number" required>
+
+        <input type="text" placeholder="Address" required>
+
+        <div class="date-row">
+            <input type="number" placeholder="Date" min="1" max="31" required>
+            <select placeholder="Month" required>
+                <option value="">Month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <input type="number" placeholder="Year" min="1900" required>
+        </div>
+
+        <input type="password" placeholder="Password" required>
+
+        <label class="gender-label">Gender :</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="other"> Other</label>
+        </div>
+
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="terms" required> I agree to Terms & Conditions</label>
+        </div>
+
+        <div class="button-group">
+            <button type="submit">Sign Up</button>
+            <button type="reset">Reset</button>
+        </div>
+
+    </form>
+
+</div>
+
+<div class="foreground">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// Interactive 3D background dragging
+(function(){
+    const bg = document.querySelector('.background');
+    let isDown = false;
+    let startX, startY;
+    let rotX = 0, rotY = 0;
+
+    bg.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        bg.style.cursor = 'grabbing';
+    });
+    document.addEventListener('mouseup', () => {
+        isDown = false;
+        bg.style.cursor = '';
+    });
+    document.addEventListener('mousemove', e => {
+        if(!isDown) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        startX = e.clientX;
+        startY = e.clientY;
+        rotY += dx * 0.5;
+        rotX -= dy * 0.5;
+        bg.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
+})();
+</script>
+
+</body>
+</html>

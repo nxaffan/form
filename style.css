@@ -1,0 +1,370 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+/* professional high‑level background with subtle texture */
+background:linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+background-image:url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'), linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+overflow:hidden;
+}
+
+@keyframes gradient{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
+
+/* Floating background shapes and patterns */
+
+.background{
+perspective:800px;
+transform-style:preserve-3d;
+transition:transform 0.2s ease;
+}
+
+.background span{
+position:absolute;
+display:block;
+width:100px;
+height:100px;
+background:rgba(255,255,255,0.1);
+transform-style:preserve-3d;
+animation:move 20s linear infinite, cubeRotate 10s linear infinite;
+}
+
+.background span::before,
+.background span::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:inherit;
+}
+
+/* create cube faces */
+.background span::before{
+transform:rotateY(90deg) translateZ(50px);
+}
+.background span::after{
+transform:rotateX(90deg) translateZ(50px);
+}
+
+@keyframes cubeRotate{
+0%{transform:rotateX(0) rotateY(0) translateZ(0);}
+100%{transform:rotateX(360deg) rotateY(360deg) translateZ(0);}
+}
+
+@keyframes move{
+0%{transform:translateY(0) translateZ(0);}
+100%{transform:translateY(-1000px) translateZ(-500px);}
+}
+
+.background span:nth-child(1){
+top:10%;
+left:20%;
+animation-duration:12s;
+background:rgba(255, 107, 107, 0.2);
+}
+
+.background span:nth-child(2){
+top:70%;
+left:10%;
+animation-duration:18s;
+background:rgba(107, 200, 255, 0.2);
+}
+
+.background span:nth-child(3){
+top:40%;
+left:80%;
+animation-duration:20s;
+background:rgba(255, 200, 107, 0.2);
+}
+
+.background span:nth-child(4){
+top:80%;
+left:60%;
+animation-duration:14s;
+background:rgba(200, 107, 255, 0.2);
+}
+
+/* additional cubes */
+.background span:nth-child(5){
+top:20%;
+left:50%;
+animation-duration:16s;
+background:rgba(107, 255, 150, 0.2);
+}
+
+.background span:nth-child(6){
+top:60%;
+left:30%;
+animation-duration:22s;
+background:rgba(150, 107, 255, 0.2);
+}
+
+.background span:nth-child(7){
+top:50%;
+left:70%;
+animation-duration:18s;
+background:rgba(255, 150, 107, 0.2);
+}
+
+.background span:nth-child(8){
+top:30%;
+left:80%;
+animation-duration:24s;
+background:rgba(107, 255, 255, 0.2);
+}
+
+.background span:nth-child(9){
+top:15%;
+left:40%;
+animation-duration:19s;
+background:rgba(255, 180, 107, 0.2);
+}
+
+.background span:nth-child(10){
+top:65%;
+left:20%;
+animation-duration:21s;
+background:rgba(180, 107, 255, 0.2);
+}
+
+.background span:nth-child(11){
+top:55%;
+left:60%;
+animation-duration:17s;
+background:rgba(107, 255, 180, 0.2);
+}
+
+.background span:nth-child(12){
+top:25%;
+left:70%;
+animation-duration:23s;
+background:rgba(255, 107, 180, 0.2);
+}
+
+.background span:nth-child(4){
+top:80%;
+left:60%;
+animation-duration:14s;
+background:rgba(200, 107, 255, 0.2);
+}
+
+/* extra decorative shapes */
+.background::before,
+.background::after{
+content:'';
+position:absolute;
+width:200px;
+height:200px;
+background:rgba(255,255,255,0.05);
+transform:rotate(45deg);
+animation:rotateShape 20s linear infinite;
+}
+
+.background::before{
+top:30%;
+left:-100px;
+}
+
+.background::after{
+bottom:30%;
+right:-100px;
+}
+
+@keyframes rotateShape{
+0%{transform:rotate(45deg) translate(0,0);}
+100%{transform:rotate(405deg) translate(100px,-100px);}
+}
+
+@keyframes move{
+0%{
+transform:translateY(0) rotate(0deg);
+}
+100%{
+transform:translateY(-1000px) rotate(720deg);
+}
+}
+
+/* foreground floating shapes */
+.foreground{
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+z-index:2;
+pointer-events:none;
+}
+
+.foreground .shape{
+position:absolute;
+width:60px;
+height:60px;
+background:rgba(255,255,255,0.08);
+border-radius:50%;
+animation:floatFront 8s ease-in-out infinite;
+}
+
+.foreground .shape:nth-child(1){top:15%; left:10%; animation-duration:10s;}
+.foreground .shape:nth-child(2){top:60%; left:80%; animation-duration:12s;}
+.foreground .shape:nth-child(3){top:75%; left:30%; animation-duration:9s;}
+.foreground .shape:nth-child(4){top:40%; left:50%; animation-duration:11s;}
+
+@keyframes floatFront{
+0%{transform:translateY(0) translateX(0);}
+50%{transform:translateY(20px) translateX(20px);}
+100%{transform:translateY(0) translateX(0);}
+}
+
+/* Glass Form */
+
+.form-container{
+width:320px;
+padding:30px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+color:white;
+}
+
+.form-container h2{
+margin-bottom:20px;
+}
+
+.name-row{
+display:flex;
+gap:10px;
+}
+
+.name-row input{
+flex:1;
+}
+
+.date-row{
+display:flex;
+gap:10px;
+}
+
+.date-row input{
+flex:1;
+}
+
+.date-row select{
+flex:1;
+}
+
+form input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+outline:none;
+}
+
+form select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+outline:none;
+background-color:white;
+cursor:pointer;
+color:#999;
+}
+
+form select option{
+color:black;
+}
+
+form select option:checked{
+color:black;
+}
+
+.radio-group{
+margin:15px 0;
+text-align:left;
+display:flex;
+gap:20px;
+}
+
+.gender-label{
+display:block;
+color:white;
+margin-top:15px;
+margin-bottom:8px;
+text-align:left;
+}
+
+.radio-group label{
+display:inline;
+margin:0;
+color:white;
+cursor:pointer;
+}
+
+.radio-group input[type="radio"]{
+width:auto;
+margin-right:8px;
+}
+
+.checkbox-group{
+margin:15px 0;
+text-align:left;
+}
+
+.checkbox-group label{
+display:block;
+margin:8px 0;
+color:white;
+cursor:pointer;
+}
+
+.checkbox-group input[type="checkbox"]{
+width:auto;
+margin-right:8px;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#ff6a00;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff3c00;
+}
+
+.button-group{
+display:flex;
+gap:10px;
+}
+
+.button-group button{
+flex:1;
+}
